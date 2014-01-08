@@ -1,0 +1,24 @@
+//  =============== BEGIN ASSESSMENT HEADER ================
+/// @file assignment<#>/main.cpp 
+/// @brief Assignment/Lab <#, e.g. 1,2,3..10> for CS 10 Fall 2013
+///
+/// @author David Anderson [dande011@ucr.edu]
+/// @date <Current date>
+///
+/// @par Enrollment Notes 
+///     Lecture Section: 001
+/// @par
+///     Lab Section: 021
+/// @par
+///     TA: Nkenge Wheatland
+///
+/// @par Plagiarism Section
+/// I hereby certify that the code in this file
+/// is ENTIRELY my own original work.
+//  =============== END ASSESSMENT HEADER ==================
+
+
+
+/// @brief
+/// @param
+/// @return
