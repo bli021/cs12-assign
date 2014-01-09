@@ -21,34 +21,60 @@
 #include <vector>
 using namespace std;
 
+int search(vector<int>&, int);
+
+void remove(vector<int>&, int);
+
 int main()
 {
 	int input;
 	vector<int> list;
-	int search, found;
+	int number, foundIndex;
 	
 	cout << "Please enter in integers (0 to stop): ";
 	cin >> input;
-	cout << endl;
 	
 	while(input != 0)
 	{
 		list.push_back (input);
-		cout << "Please enter in integers (0 to stop): ";
 		cin >> input;
-		cout << endl;
 	}
-	
-	cout << "What number would you like to find and remove?: ";
-	cin >> search;
 	cout << endl;
+	cout << "What number would you like to find and remove?: ";
+	cin >> number;
+	cout << endl;
+	foundIndex = search(list, number);
+	//cout << "foundIndex: " << foundIndex << endl;
+	if(foundIndex != -1)
+		remove(list, foundIndex);
+	//cout << "removed" << endl;
 	
-	cout << "Found: " << found << endl;
+	
+	cout << "Found: " << foundIndex << endl;
 	cout << "Result: ";
-	for (int i=0; i <= list.size(); i++)
+	for (int i=0; i < static_cast<int>(list.size()); i++)
 	{
-		cout << list[i] << " ";
+		cout << list.at(i) << " ";
 	}
+	cout << endl;
 	return 0;
+}
+
+int search(vector<int> &v, int number)
+{
+	for(int i=0; i < static_cast<int>(v.size()); i++)
+	{
+		if(v.at(i) == number)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+
+void remove(vector<int> &v, int index)
+{
+	v.erase (v.begin() + index);
 }
 
