@@ -23,17 +23,15 @@
 
 using namespace std;
 
-const int MAX = max(R, S);
-
 void matrixMult(const int a[][R], const int b[][S], int product[][S]);
 void matrixInp( int a[][R], int x, int y );
 void matrixOut( int a[][R], int x, int y );
 
 int main()
 {
-    int a[Q][R];
-    int b[R][S];
-    int sum[Q][S];
+    int a[Q][R] = { {0, 0, 0}, {0, 0, 0}};
+    int b[R][S] = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
+    int sum[Q][S] = {{0, 0, 0}, {0, 0, 0}};
 
     //Input the matrices
     matrixInp( a, Q, R );
@@ -41,9 +39,9 @@ int main()
     cout << endl;
 
     //Test output
-    cout << "Test:" << endl;
-    matrixOut( a, Q, R );
-    matrixOut( b, R, S );
+    // cout << "Test:" << endl;
+    // matrixOut( a, Q, R );
+    // matrixOut( b, R, S );
 
     //Multiply the matrixes
     matrixMult( a, b, sum );
@@ -66,7 +64,7 @@ void matrixMult(const int a[][R], const int b[][S], int product[][S])
 
 void matrixInp( int a[][R], int x, int y )
 {
-    cout << "Enter Matrix (size " << x << 'x' << y << ')';
+    cout << "Enter Matrix (size " << x << 'x' << y << "): ";
     for( int i = 0; i < x; i++ )
         for( int j = 0; j < y; j++)
             cin >> a[i][j];
@@ -77,7 +75,7 @@ void matrixOut( int a[][R], int x, int y )
     for( int i = 0; i < x; i++ )
     {
         for( int j = 0; j < y; j++)
-            cout << a[i][j] << '\t';
+            cout << a[i][j] << ' ';
         cout << endl;
     }
     cout << endl;
