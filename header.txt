@@ -1,6 +1,6 @@
 //  =============== BEGIN ASSESSMENT HEADER ================
 /// @file assignment<#>/main.cpp 
-/// @brief Assignment/Lab <#, e.g. 1,2,3..10> for CS 10 Fall 2013
+/// @brief Assignment/Lab <#, e.g. 1,2,3..10> for CS 12 Winter 2014
 ///
 /// @author David Anderson [dande011@ucr.edu]
 /// @date <Current date>
