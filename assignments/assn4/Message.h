@@ -1,20 +1,22 @@
 //inclusion guards
 #include <iostream>
+using namespace std;
   class Message
   {
     private:
-      std::string author;
-      std::string subject;
-      std::string body;
+      string author;
+      string subject;
+      string body;
 
     public:
       //default constructor
-      Message();
+      Message() : author(), subject(), body(){}
 
       //Constructor with parameters
-      Message(const std::string &athr, 
-              const std::string &sbjct, 
-              const std::string &body);
+      Message(const string &athr, 
+              const string &sbjct, 
+              const string &bdy)
+        : author(athr), subject(sbjct), body(bdy){}
 
 
       //displays the message in the given format. See output specs.

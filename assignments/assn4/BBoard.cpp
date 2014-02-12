@@ -5,7 +5,7 @@
 
 using namespace std;
 
-//--- PUBLIC ---\\
+//--- PUBLIC ---
 void BBoard::setup(const string &input_file)
 {
     ifstream infile;
@@ -25,7 +25,7 @@ void BBoard::login()
     
 }
 
-//--- PRIVATE ---\\
+//--- PRIVATE ---
 void BBoard::error(int &errlvl)
 {
     switch (errlvl)

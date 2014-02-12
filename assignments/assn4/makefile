@@ -16,7 +16,7 @@ Message.o: Message.cpp Message.h
 User.o: User.cpp User.h
 	$(COMPILER) $(FLAGS) -c User.cpp
 
-BBoard.o: BBoard.cpp BBoard.o
+BBoard.o: BBoard.cpp BBoard.h
 	$(COMPILER) $(FLAGS) -c BBoard.cpp
 
 clean:
