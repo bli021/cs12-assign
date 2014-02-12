@@ -3,8 +3,8 @@
 #include <vector>
 #include <fstream>
 
-#include "User.cpp"
-#include "Message.cpp"
+#include "User.h"
+#include "Message.h"
 
 using namespace std;
 
@@ -22,10 +22,10 @@ class BBoard
         void add_message();
         
         void quit(){cout << "Bye!" << endl; exit(0);};
-        void error(int&);
+        void error(int);
     public:
-        BBoard() : title("Default title"), user_list(), current_user("default"), message_list();
-        BBoard(const string &ttl) : title(ttl), user_list(), current_user("default"), message_list(){}
+        BBoard() : title("Default title"), user_list(), current_user(), message_list(){}
+        BBoard(const string &ttl) : title(ttl), user_list(), current_user(), message_list(){}
         void setup(const string &input_file);
         void login();
         void run();

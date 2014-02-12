@@ -5,7 +5,7 @@
 
 COMPILER=g++
 FLAGS=-W -Wall -Werror -ansi -pedantic
-OBJS=Message.o User.o BBoard.o
+OBJS=BBoard.o Message.o User.o
 
 all: main.cpp $(OBJS)
 	$(COMPILER) $(FLAGS) main.cpp $(OBJS) -o main
@@ -16,7 +16,7 @@ Message.o: Message.cpp Message.h
 User.o: User.cpp User.h
 	$(COMPILER) $(FLAGS) -c User.cpp
 
-BBoard.o: BBoard.cpp BBoard.h
+BBoard.o: BBoard.cpp BBoard.h User.o Message.o
 	$(COMPILER) $(FLAGS) -c BBoard.cpp
 
 clean:

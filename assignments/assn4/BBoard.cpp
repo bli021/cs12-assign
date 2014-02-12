@@ -9,13 +9,16 @@ using namespace std;
 void BBoard::setup(const string &input_file)
 {
     ifstream infile;
-    infile.open(input_file);
+    infile.open(input_file.c_str());
     if(!infile.is_open())
         error(3);
     int i=0;
     while(infile.good())
     {
-        user_list.at(i) = infile.getline();
+        string a,b;
+        getline(infile, a, '\t');
+        getline(infile, b);
+        user_list.at(i) = User(a,b);
         i++;
     }
 }
@@ -26,7 +29,7 @@ void BBoard::login()
 }
 
 //--- PRIVATE ---
-void BBoard::error(int &errlvl)
+void BBoard::error(int errlvl)
 {
     switch (errlvl)
     {
