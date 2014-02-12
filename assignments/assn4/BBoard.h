@@ -15,9 +15,10 @@ class BBoard()
         void add_message();
         
         void quit(){std::cout << "Bye!" << endl; exit(0);};
+        void error(int);
     public:
-        BBoard() : current_user("default");
-        BBoard(const string &ttl) : current_user("default"), title="ttl"{};
+        BBoard() : current_user("default"), title("Default title"), user_list(), message_list();
+        BBoard(const string &ttl) : current_user("default"), title(ttl), user_list(), message_list();
         void setup(const string &input_file);
         void login();
         void run();
