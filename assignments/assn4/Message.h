@@ -1,3 +1,6 @@
+#ifndef MESSAGE_H
+#define MESSAGE_H
+
 //inclusion guards
 #include <iostream>
 using namespace std;
@@ -23,3 +26,5 @@ using namespace std;
       void display() const;
   };
   //end inc guards
+  #endif
+  

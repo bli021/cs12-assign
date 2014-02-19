@@ -1,13 +1,16 @@
 #include <iostream>
 
-// #include "BBoard.cpp"
-// #include "Message.cpp"
-// #include "User.cpp"
+#include "BBoard.h"
+#include "Message.h"
+#include "User.h"
 
 using namespace std;
 
-int main()
+int main(/*int argc, char* argv[]*/)
 {
-    cout << "thing" << endl;
+    BBoard thing( "My Title" );
+    thing.setup(infile);
+    thing.login();
+    thing.run();
     return 1;
 }

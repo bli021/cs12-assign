@@ -1,3 +1,6 @@
+#ifndef BBOARD_H
+#define BBOARD_H
+
 #include <cstdlib>
 #include <iostream>
 #include <vector>
@@ -24,7 +27,7 @@ class BBoard
         void quit(){cout << "Bye!" << endl; exit(0);};
         void error(int);
     public:
-        BBoard() : title("Default title"), user_list(), current_user(), message_list(){}
+        BBoard() : title("Default Title"), user_list(), current_user(), message_list(){}
         BBoard(const string &ttl) : title(ttl), user_list(), current_user(), message_list(){}
         void setup(const string &input_file);
         void login();
@@ -33,3 +36,4 @@ class BBoard
 
 
 };
+#endif<<

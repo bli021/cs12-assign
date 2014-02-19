@@ -22,19 +22,69 @@ void BBoard::setup(const string &input_file)
         i++;
     }
 }
+
+//todo
 void BBoard::login()
 {
+    string temp1, temp2;
+    // bool validUser = false;
+    // bool validPass = false;
+    cout << "Welcome to " << title << endl;
     cout << "Enter your username ('Q' or 'q' to quit): ";
-    
+    cin >> temp1;
+    if((temp1 == "q") || (temp1 == "Q"))
+        quit();
+    cout << "\nEnter your password: ";
+    cin >> temp2;
+
+
+
+
+
+}
+
+//todo
+void BBoard::run()
+{
+
 }
 
 //--- PRIVATE ---
+
+//todo
+void BBoard::add_user(istream &infile, cons string &name, const string &pass)
+{
+
+}
+
+//todo
+bool user_exists(const string &name, const strin &pass)
+{
+
+}
+//todo
+User get_User(const string &name) const
+{
+
+}
+
+//todo
+void BBoard::display() const
+{
+
+}
+ //todo
+void add_message()
+{
+    
+}
 void BBoard::error(int errlvl)
 {
     switch (errlvl)
     {
         case 3:
-            cout << "I/O error. Check that the filename is correct and accessible" << endl;
+            cout << "I/O error. Check that the filename" 
+                << " is correct and accessible" << endl;
             break;
     }
     exit(1);

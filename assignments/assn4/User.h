@@ -1,3 +1,6 @@
+#ifndef USER_H
+#define USER_H
+
 #include <iostream> 
 
 using namespace std;
@@ -29,3 +32,4 @@ using namespace std;
       // current assignment.
       //void set_password(const string &newpass) : password(newpass){}
   };
+#endif
