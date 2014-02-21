@@ -66,9 +66,22 @@ IntVector::IntVector(unsigned size, int value):sz(size),cap(size)
         data[i] = value;
 }
 
+const int & IntVector::at( unsigned index ) const
+{
+    std::cout << "This is the accessor" << std::endl;
+    if(index >= size())
+    {
+        std::cout << "Exit with error 1 status: in member function at: out of bounds." << std::endl;
+        exit(1);
+    }
+    else
+        return data[index];
+}
+
 int & IntVector::at( unsigned index )
 {
-    if(index > size())
+    std::cout << "This is the manipulator." << std::endl;
+    if(index >= size())
     {
         std::cout << "Exit with error 1 status: in member function at: out of bounds." << std::endl;
         exit(1);

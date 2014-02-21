@@ -35,11 +35,11 @@ class IntVector
         unsigned size() const{return sz;};
         unsigned capacity() const{return cap;};
         bool empty() const{return !sz;};
-        // const int & at( unsigned index ) const{return at(index);};
+        const int & at( unsigned index ) const;//{return at(index);}
         int & at( unsigned index );
         void insert( unsigned index, int value );
         void erase( unsigned index );
-        const int & front() const{return front();};
+        const int & front() const{return front();}
         int & front(){return data[0];};
         const int &back() const{return back();};
         int & back(){return at(size()-1);};

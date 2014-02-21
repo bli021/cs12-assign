@@ -39,10 +39,14 @@ void printStats(IntVector data)
 
 int main()
 {
-    IntVector data(3,2);
+    for(int x=3; x<8; x++) {
+        IntVector data(x,2);
 
-    printValues(data);
-    printValues(data);
+        printValues(data);
+        printValues(data);
+        //printValues(data);
+        
+    }
     // printStats(data);
 
 
