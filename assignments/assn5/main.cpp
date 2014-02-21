@@ -17,7 +17,7 @@
 //  =============== END ASSESSMENT HEADER ==================
 #include <iostream>
 
-#include "IntVector.h"
+#include "IntVector.cpp"
 
 using namespace std;
 
@@ -47,8 +47,8 @@ int main()
         IntVector data(3,2);
         IntVector data2(4,5);
         
-        cout << data.at(0) << " " << data.at(0) << endl;
-        cout << data2.at(0) << " " << data2.at(0) << endl;
+        // cout << data.at(0) << " " << data.at(0) << endl;
+        // cout << data2.at(0) << " " << data2.at(0) << endl;
 
         // printValues(data);
         // printValues(data2);
@@ -56,10 +56,10 @@ int main()
         // printValues(data2);
 
         //printValues(data);
-        cout << "The error is here" << endl;
+        // cout << "The error is here" << endl;
         
     // }
-    cout << "or maybe here?" << endl;
+    // cout << "or maybe here?" << endl;
     // printStats(data);
 
     
@@ -110,13 +110,15 @@ int main()
     //     data.assign(5,6);
     //     printValues(data);
     
-    // /* PUSH_BACK */ 
-    //     printStats(data);
-    //     printValues(data);
-    //     cout << "data.push_back(5);" << endl;
-    //     data.push_back(5);
-    //     printStats(data);
-    //     printValues(data);
+    /* PUSH_BACK */ 
+        printStats(data);
+        // printValues(data);
+        // cout << "data.at(3):\t" << data.at(3) << endl;
+        cout << "data.push_back(5);" << endl;
+        data.push_back(5);
+        printStats(data);
+        cout << "data.at(3):\t" << data.at(3) << endl;
+        // printValues(data);
     
     
     // /* POP_BACK */
@@ -125,7 +127,7 @@ int main()
     // /* RESERVE */
 
 
-    cout << "I got to here" << endl;
+    // cout << "I got to here" << endl;
     cout << endl;
     return 0;
 }

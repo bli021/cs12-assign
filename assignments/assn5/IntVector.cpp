@@ -32,12 +32,15 @@ void IntVector::expand()
         cap++;
         data = new int[capacity()];
     }
-    int* temp = data;
-    cap *= 2;
-    data = new int[capacity()];
-    for(unsigned i=0; i < size(); i++)
-        data[i] = temp[i];
-    delete [] temp;
+    else
+    {
+        int* temp = data;
+        cap *= 2;
+        data = new int[capacity()];
+        for(unsigned i=0; i < size(); i++)
+            data[i] = temp[i];
+        delete [] temp;
+    }
 }
 
 void IntVector::expand( unsigned amount )
@@ -88,7 +91,7 @@ const int & IntVector::at( unsigned index ) const
 
 int & IntVector::at( unsigned index )
 {
-    // std::cout << "This is the manipulator." << std::endl;
+    std::cout << "This is the manipulator." << std::endl;
     if(index >= size())
     {
         std::cout << "Exit with error 1 status: in member function at: out of bounds." << std::endl;
@@ -96,8 +99,8 @@ int & IntVector::at( unsigned index )
     }
     else
     {
-        std::cout << index << std::endl;
-        std::cout << "data "<< data[index] << std::endl;
+        // std::cout << index << std::endl;
+        // std::cout << "data "<< data[index] << std::endl;
         return data[index];
     }
 }
