@@ -37,7 +37,6 @@ class IntVector
         bool empty() const{return !sz;};
         const int & at( unsigned index ) const{return at(index);};
         int & at( unsigned index );
-        //todo
         void insert( unsigned index, int value );
         //todo
         void erase( unsigned index );
