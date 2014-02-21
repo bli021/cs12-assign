@@ -17,15 +17,18 @@
 //  =============== END ASSESSMENT HEADER ==================
 #include <iostream>
 
-#include "IntVector.cpp"
+#include "IntVector.h"
 
 using namespace std;
 
 void printValues(IntVector data)
 {
     cout << "All values of vector of size " << data.size() << endl;
-    for(int i=0; i < data.size(); i++)
+    for(unsigned i=0; i < data.size(); i++)
+    {
+        // cout << "No error" << endl;
         cout << "data.at(" << i << "):\t" << data.at(i) << endl;
+    }
     cout << endl;
 }
 
@@ -39,80 +42,90 @@ void printStats(IntVector data)
 
 int main()
 {
-    for(int x=3; x<8; x++) {
-        IntVector data(x,2);
-
-        printValues(data);
-        printValues(data);
-        //printValues(data);
+    // for(int x=3; x<8; x++)
+    // {
+        IntVector data(3,2);
+        IntVector data2(4,5);
         
-    }
+        cout << data.at(0) << " " << data.at(0) << endl;
+        cout << data2.at(0) << " " << data2.at(0) << endl;
+
+        // printValues(data);
+        // printValues(data2);
+        // printValues(data);
+        // printValues(data2);
+
+        //printValues(data);
+        cout << "The error is here" << endl;
+        
+    // }
+    cout << "or maybe here?" << endl;
     // printStats(data);
 
+    
+    // /* AT */
+    //     cout << "data.at(2) = 4;"       << endl;
+    //     data.at(2) = 4;
+    //     cout << "data.at(2):\t"         << data.at(2) << endl;
+    
+    //     cout << endl;
+    
+    // /* INSERT */
+    //     cout << "data.insert(2,7)" << endl;
+    //     data.insert(2,7);
+    //     cout << "data.at(2):\t"         << data.at(2) << endl;
+    
+    //     cout << endl;
+    
+    // /* ERASE */
+    //     cout << "data.at(2):\t"         << data.at(2) << endl;
+    //     cout << "data.at(3):\t"         << data.at(3) << endl;
+    //     cout << "data.erase(2);" << endl;
+    //     data.erase(2);
+    //     cout << "data.at(2):\t"         << data.at(2) << endl;
+    
+    //     cout << endl;
+    
+    // /* FRONT */
+    //     cout << "data.at(0):\t"            << data.at(0) << endl;
+    //     cout << "data.front():\t"          << data.front() << endl;
+    //     cout << "data.front() = 7;" << endl;
+    //     data.front() = 7;
+    //     cout << "data.at(0):\t"            << data.at(0) << endl;
+    
+    //     cout << endl;
+    
+    // /* BACK */
+    //     cout << "data.at(size()-1):\t"        << data.at(data.size()-1) << endl;
+    //     cout << "data.back():\t"            << data.back() <<endl;
+    //     cout << "data.back() = 7;" << endl;
+    //     data.back() = 7;
+    //     cout << "data.back():\t"            << data.back() << endl;
+    
+    //     cout << endl;
+    
+    // /* ASSIGN */
+    //     printValues(data);
+    //     cout << "data.assign(5,6);" << endl;
+    //     data.assign(5,6);
+    //     printValues(data);
+    
+    // /* PUSH_BACK */ 
+    //     printStats(data);
+    //     printValues(data);
+    //     cout << "data.push_back(5);" << endl;
+    //     data.push_back(5);
+    //     printStats(data);
+    //     printValues(data);
+    
+    
+    // /* POP_BACK */
+    // /* CLEAR */
+    // /* RESIZE */
+    // /* RESERVE */
 
-// /* AT */
-//     cout << "data.at(2) = 4;"       << endl;
-//     data.at(2) = 4;
-//     cout << "data.at(2):\t"         << data.at(2) << endl;
 
-//     cout << endl;
-
-// /* INSERT */
-//     cout << "data.insert(2,7)" << endl;
-//     data.insert(2,7);
-//     cout << "data.at(2):\t"         << data.at(2) << endl;
-
-//     cout << endl;
-
-// /* ERASE */
-//     cout << "data.at(2):\t"         << data.at(2) << endl;
-//     cout << "data.at(3):\t"         << data.at(3) << endl;
-//     cout << "data.erase(2);" << endl;
-//     data.erase(2);
-//     cout << "data.at(2):\t"         << data.at(2) << endl;
-
-//     cout << endl;
-
-// /* FRONT */
-//     cout << "data.at(0):\t"            << data.at(0) << endl;
-//     cout << "data.front():\t"          << data.front() << endl;
-//     cout << "data.front() = 7;" << endl;
-//     data.front() = 7;
-//     cout << "data.at(0):\t"            << data.at(0) << endl;
-
-//     cout << endl;
-
-// /* BACK */
-//     cout << "data.at(size()-1):\t"        << data.at(data.size()-1) << endl;
-//     cout << "data.back():\t"            << data.back() <<endl;
-//     cout << "data.back() = 7;" << endl;
-//     data.back() = 7;
-//     cout << "data.back():\t"            << data.back() << endl;
-
-//     cout << endl;
-
-// /* ASSIGN */
-//     printValues(data);
-//     cout << "data.assign(5,6);" << endl;
-//     data.assign(5,6);
-//     printValues(data);
-
-// /* PUSH_BACK */ 
-//     printStats(data);
-//     printValues(data);
-//     cout << "data.push_back(5);" << endl;
-//     data.push_back(5);
-//     printStats(data);
-//     printValues(data);
-
-
-// /* POP_BACK */
-// /* CLEAR */
-// /* RESIZE */
-// /* RESERVE */
-
-
-
+    cout << "I got to here" << endl;
     cout << endl;
     return 0;
 }

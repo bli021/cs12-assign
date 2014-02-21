@@ -35,9 +35,9 @@ void IntVector::expand()
     int* temp = data;
     cap *= 2;
     data = new int[capacity()];
-    for(int i=0; i < sz; i++)
+    for(unsigned i=0; i < size(); i++)
         data[i] = temp[i];
-    delete temp;
+    delete [] temp;
 }
 
 void IntVector::expand( unsigned amount )
@@ -45,9 +45,9 @@ void IntVector::expand( unsigned amount )
     int* temp = data;
     cap += amount;
     data = new int[capacity()];
-    for(int i=0; i < sz; i++)
+    for(unsigned i=0; i < size(); i++)
         data[i] = temp[i];
-    delete temp;
+    delete [] temp;
 }
 
 /* ---PUBLIC--- */
@@ -66,6 +66,11 @@ IntVector::IntVector(unsigned size, int value):sz(size),cap(size)
         data[i] = value;
 }
 
+IntVector::~IntVector()
+{
+    delete[] data;
+}
+
 const int & IntVector::at( unsigned index ) const
 {
     std::cout << "This is the accessor" << std::endl;
@@ -75,19 +80,26 @@ const int & IntVector::at( unsigned index ) const
         exit(1);
     }
     else
+    { 
+        std::cout << "data "<< data[index] << std::endl;
         return data[index];
+    }
 }
 
 int & IntVector::at( unsigned index )
 {
-    std::cout << "This is the manipulator." << std::endl;
+    // std::cout << "This is the manipulator." << std::endl;
     if(index >= size())
     {
         std::cout << "Exit with error 1 status: in member function at: out of bounds." << std::endl;
         exit(1);
     }
     else
+    {
+        std::cout << index << std::endl;
+        std::cout << "data "<< data[index] << std::endl;
         return data[index];
+    }
 }
 
 void IntVector::insert( unsigned index, int value )
@@ -100,7 +112,7 @@ void IntVector::insert( unsigned index, int value )
     }
     else if(sz > capacity())
         expand();
-    for(int i=sz; i > index; i--)
+    for(unsigned i=sz; i > index; i--)
         data[i] = data[i-1];
     data[index] = value;
 
@@ -114,7 +126,7 @@ void IntVector::erase( unsigned index )
         std::cout << "Exit with error 1 status: in member function erase: index out of bouds" << std::endl;
         exit(1);
     }
-    for(int i=index; i < size(); i++)
+    for(unsigned i=index; i < size(); i++)
         data[i]=data[i+1];
 }
 
@@ -123,7 +135,7 @@ void IntVector::assign( unsigned n, int value )
     if(n > capacity())
         expand( (n > capacity()*2) ? n-capacity() : capacity() );
     sz = n;
-    for(int i = 0; i < size(); i++)
+    for(unsigned i = 0; i < size(); i++)
         data[i] = value;
 }
 
@@ -157,7 +169,7 @@ void IntVector::resize( unsigned input )
         else
         {
             expand((input > capacity()*2) ? input-capacity() : capacity());
-            for(int i=size()+1; i <= input; i++)
+            for(unsigned i=size()+1; i <= input; i++)
                 data[i] = 0;
             sz = input;
         }
@@ -175,7 +187,7 @@ void IntVector::resize( unsigned input, int value )
         else
         {
             expand((input > capacity()*2) ? input-capacity() : capacity() );
-            for(int i=size()+1; i <= input; i++)
+            for(unsigned i=size()+1; i <= input; i++)
                 data[i] = value;
             sz = input;
         }

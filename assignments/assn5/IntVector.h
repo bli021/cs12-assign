@@ -31,7 +31,7 @@ class IntVector
         IntVector():sz(0),cap(0),data(0){};
         IntVector(unsigned size);
         IntVector(unsigned size, int value);
-        ~IntVector(){delete[] data;};
+        ~IntVector();//{delete[] data;};
         unsigned size() const{return sz;};
         unsigned capacity() const{return cap;};
         bool empty() const{return !sz;};
