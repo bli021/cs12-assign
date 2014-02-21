@@ -31,33 +31,25 @@ class IntVector
         IntVector():sz(0),cap(0),data(0){};
         IntVector(unsigned size);
         IntVector(unsigned size, int value);
-        ~IntVector(){delete data;};
+        ~IntVector(){delete[] data;};
         unsigned size() const{return sz;};
         unsigned capacity() const{return cap;};
         bool empty() const{return !sz;};
-        const int & at( unsigned index ) const{return at(index);};
+        // const int & at( unsigned index ) const{return at(index);};
         int & at( unsigned index );
         void insert( unsigned index, int value );
-        //todo
         void erase( unsigned index );
-        //todo
         const int & front() const{return front();};
-        //todo
         int & front(){return data[0];};
-        //todo
         const int &back() const{return back();};
-        //todo
-        int & back(){return data[sz];};
+        int & back(){return at(size()-1);};
         //todo
         void assign( unsigned n, int value );
-        //todo
         void push_back( int value );
-        //todo
         void pop_back();
-        //todo
-        void clear();
-        //todo
-        void resize( unsigned size, int value );
+        void clear(){sz=0;};
+        void resize( unsigned input );
+        void resize( unsigned input, int value );
         //todo
         void reserve( unsigned n );
         

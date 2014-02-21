@@ -26,9 +26,15 @@
 
 void IntVector::expand()
 {
+    if(empty())
+    {
+        sz++;
+        cap++;
+        data = new int[capacity()];
+    }
     int* temp = data;
     cap *= 2;
-    data = new int[cap];
+    data = new int[capacity()];
     for(int i=0; i < sz; i++)
         data[i] = temp[i];
     delete temp;
@@ -38,7 +44,7 @@ void IntVector::expand( unsigned amount )
 {
     int* temp = data;
     cap += amount;
-    data = new int[cap];
+    data = new int[capacity()];
     for(int i=0; i < sz; i++)
         data[i] = temp[i];
     delete temp;
@@ -62,19 +68,19 @@ IntVector::IntVector(unsigned size, int value):sz(size),cap(size)
 
 int & IntVector::at( unsigned index )
 {
-    if(index < sz)
-        return data[index];
-    else
+    if(index > size())
     {
         std::cout << "Exit with error 1 status: in member function at: out of bounds." << std::endl;
         exit(1);
     }
+    else
+        return data[index];
 }
 
 void IntVector::insert( unsigned index, int value )
 {
     sz++;
-    if(index > sz)
+    if(index > size())
     {
         std::cout << "Exit with error 1 status: in member function insert: index out of bounds" << std::endl;
         exit(1);
@@ -85,4 +91,86 @@ void IntVector::insert( unsigned index, int value )
         data[i] = data[i-1];
     data[index] = value;
 
+}
+
+void IntVector::erase( unsigned index )
+{
+    sz--;
+    if(index > size())
+    {
+        std::cout << "Exit with error 1 status: in member function erase: index out of bouds" << std::endl;
+        exit(1);
+    }
+    for(int i=index; i < size(); i++)
+        data[i]=data[i+1];
+}
+
+void IntVector::assign( unsigned n, int value )
+{
+    if(n > capacity())
+        expand( (n > capacity()*2) ? n-capacity() : capacity() );
+    sz = n;
+    for(int i = 0; i < size(); i++)
+        data[i] = value;
+}
+
+void IntVector::push_back( int value )
+{
+    sz++;
+    expand(1);
+    if(size() > capacity())
+        expand();
+    data[size()] = value;
+}
+
+void IntVector::pop_back()
+{
+    if(empty())
+    {
+        std::cout << "Exit with error 1 status: in member function pop_back: cannot reduce size of empty array" << std::endl;
+        exit(1);
+    }
+    sz--;
+}
+
+void IntVector::resize( unsigned input )
+{
+    if(input < size())
+        sz = input;
+    else if(input > size())
+    {
+        if (input < capacity())
+            sz = input;
+        else
+        {
+            expand((input > capacity()*2) ? input-capacity() : capacity());
+            for(int i=size()+1; i <= input; i++)
+                data[i] = 0;
+            sz = input;
+        }
+    }
+}
+
+void IntVector::resize( unsigned input, int value )
+{
+    if(input < size())
+        sz = input;
+    else if(input > size())
+    {
+        if (input < capacity())
+            sz = input;
+        else
+        {
+            expand((input > capacity()*2) ? input-capacity() : capacity() );
+            for(int i=size()+1; i <= input; i++)
+                data[i] = value;
+            sz = input;
+        }
+    }
+}
+
+void IntVector::reserve( unsigned n )
+{
+    if( capacity() < n )
+        expand((n > capacity()*2 ) ? n-capacity() : capacity());
 }
