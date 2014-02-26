@@ -1,4 +1,12 @@
-#include "IntNode.h"
+
+
+struct IntNode
+{
+    int data;
+    IntNode *next;
+    IntNode( int data ) : data(data), next(0) {}
+};
+
 
 class IntList
 {

@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "IntList.h"
+#include "IntList.cpp"
 
 using namespace std;
 
