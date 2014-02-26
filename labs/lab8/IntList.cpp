@@ -12,8 +12,8 @@ void IntList::display() const
 		
     for( IntNode *cur= head; cur != 0; cur = cur->next)
     {
-		if( (cur==tail) )
-			cout << '*';
+		if( (cur!=head) )
+			cout << ' ';
 		cout << cur->data;
 	}
 }
