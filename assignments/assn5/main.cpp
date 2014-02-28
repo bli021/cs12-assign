@@ -17,7 +17,8 @@
 //  =============== END ASSESSMENT HEADER ==================
 #include <iostream>
 
-#include "IntVector.cpp"
+#include "IntVector.h"
+
 
 using namespace std;
 
@@ -32,7 +33,7 @@ void printValues(IntVector data)
     cout << endl;
 }
 
-void printStats(IntVector data)
+void printStats(IntVector &data)
 {
     cout << "data.size():\t"        << data.size() << endl;
     cout << "data.capacity():\t"    << data.capacity() << endl;
@@ -47,7 +48,7 @@ int main()
         IntVector data(3,2);
         IntVector data2(4,5);
         
-        // cout << data.at(0) << " " << data.at(0) << endl;
+         cout << data.at(0) << " " << data.at(0) << endl;
         // cout << data2.at(0) << " " << data2.at(0) << endl;
 
         // printValues(data);

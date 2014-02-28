@@ -65,7 +65,7 @@ IntVector::IntVector(unsigned size):sz(size),cap(size)
 IntVector::IntVector(unsigned size, int value):sz(size),cap(size)
 {
     data = new int[size];
-    for(unsigned i=0; i < size; i++)
+    for(unsigned i=0; i < size; ++i)
         data[i] = value;
 }
 
