@@ -17,7 +17,7 @@
 //  =============== END ASSESSMENT HEADER ==================
 #include <iostream>
 
-#include "IntVector.cpp"
+#include "IntVector.h"
 
 using namespace std;
 
@@ -42,23 +42,20 @@ void printStats(IntVector data)
 
 int main()
 {
-    // for(int x=3; x<8; x++)
-    // {
-        IntVector data(3,2);
-        IntVector data2(4,5);
-        
-        // cout << data.at(0) << " " << data.at(0) << endl;
-        // cout << data2.at(0) << " " << data2.at(0) << endl;
+    IntVector data(3,2);
+    IntVector data2(4,5);
+    
+    // cout << data.at(0) << " " << data.at(0) << endl;
+    // cout << data2.at(0) << " " << data2.at(0) << endl;
 
-        // printValues(data);
-        // printValues(data2);
-        // printValues(data);
-        // printValues(data2);
+    // printValues(data);
+    // printValues(data2);
+    // printValues(data);
+    // printValues(data2);
 
-        //printValues(data);
-        // cout << "The error is here" << endl;
+    //printValues(data);
+    // cout << "The error is here" << endl;
         
-    // }
     // cout << "or maybe here?" << endl;
     // printStats(data);
 

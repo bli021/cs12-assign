@@ -21,6 +21,6 @@ class IntList
         void push_back( int value );
         void pop_front();
         void select_sort();
-        void insert_sorted();
+        void insert_sorted( int value );
         void remove_duplicates();
 };

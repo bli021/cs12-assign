@@ -49,13 +49,52 @@ void IntList::pop_front()
 //todo
 void IntList::select_sort()
 {
-    
+    IntNode *min = head;
+    for(IntNode *i = head; i->next != 0; i = i->next)
+    {
+        for(IntNode *j = i->next; j->next != 0; j = j->next)
+        {
+            if(j->data < min->data)
+                min = j;
+        }
+        swap(i->data,min->data);
+    }
 }
 
-//todo
-void IntList::insert_sorted()
+void IntList::insert_sorted( int value )
 {
+    IntNode *temp = new IntNode( value );
+    IntNode *prev = head;
+    if( (head==0) || (value <= head->data) )
+    {
+        push_front(value);
+        return;
+    }
+    else if(value >= tail->data)
+    {
+        push_back(value);
+        return;
+    }
+    IntNode *cur;
+    for(cur = head; cur != tail; cur = cur->next)
+    {
+        if(cur->data >= value)
+        {
+            prev->next = temp;
+            temp->next = cur;
+            return;
+        }
+        prev = cur;
+    }
 
+    if(value < tail->data)
+    {
+        prev->next = temp;
+        temp->next = cur;
+        return;
+    }
+
+    // cout << "Error in insert_sorted" << endl;
 }
 
 //todo
