@@ -49,12 +49,14 @@ void IntList::pop_front()
 //todo
 void IntList::select_sort()
 {
+    if(head==0)
+        return;
     IntNode *min = head;
     for(IntNode *i = head; i->next != 0; i = i->next)
     {
-        for(IntNode *j = i->next; j->next != 0; j = j->next)
+        for(IntNode *j = i->next; j != tail; j = j->next)
         {
-            if(j->data < min->data)
+            if(j->data <= min->data)
                 min = j;
         }
         swap(i->data,min->data);
@@ -100,5 +102,14 @@ void IntList::insert_sorted( int value )
 //todo
 void IntList::remove_duplicates()
 {
-
+    if(head==0)
+        return;
+    for(IntNode *cur = head; cur->next != 0; cur = cur->next)
+    {
+        for(IntNode *cur2 = cur->next; cur2->next != 0; cur2 = cur2->next)
+        {
+            if(cur->data == cur2->data)
+                cur->next = cur2->next;
+        }
+    }
 }
