@@ -15,26 +15,21 @@
 /// I hereby certify that the code in this file
 /// is ENTIRELY my own original work.
 //  =============== END ASSESSMENT HEADER ==================
-
 #include <iostream>
-
-#include "IntList.cpp"
 
 using namespace std;
 
+void reverse(string &s)
+{
+	s.size()
+}
+
 int main()
 {
-    IntList temp;
-    temp.display();
-    cout << endl;
-    temp.push_front(5);
-    temp.display();
-    cout << endl;
-    temp.push_front(15);
-    temp.push_front(45);
-    temp.display();
-    cout << endl;
-    temp.pop_front();
-    temp.display();
-    cout << endl;
+	string temp;
+	cout << "Input a string: ";
+	cin >> temp;
+	reverse(temp);
+	cout << "Reversed: " << temp << endl;
+	return 0;
 }
