@@ -80,11 +80,14 @@ int main()
     temp5.push_back(715);
     temp5.push_back(799);
     temp5.push_back(949);
+    temp5.push_back(949);
     temp5.push_back(366);
     temp5.push_back(374);
     temp5.push_back(462);
+    temp5.push_back(462);
     temp5.push_back(484);
     temp5.push_back(600);
+    temp5.push_back(249);
     temp5.push_back(686);
     temp5.display();
     cout << endl;
@@ -92,6 +95,21 @@ int main()
     temp5.display();
     cout << endl;
 
+    temp5.remove_duplicates();
+    temp5.display();
+    cout << endl;
+
+    IntList temp6;
+    temp6.push_back(667);
+    temp6.push_back(314);
+    temp6.push_back(895);
+    temp6.push_back(63);
+    temp6.push_back(462);
+    temp6.display();
+    cout << endl;
+    temp6.remove_duplicates();
+    temp6.display();
+    cout << endl;
 
     cout << "End" << endl;
 }
