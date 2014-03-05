@@ -28,7 +28,7 @@ void reverse(string &s, int i)
     {
 	   swap( s.at(i), s.at( (s.size()-1) - i) );
        reverse(s, i + 1);
-   }
+	}
 }
 
 void reverse(string &s)
