@@ -57,8 +57,8 @@ bool diophantine(int a, int b, int c, int &x, int &y)
 	}
 	else
 	{
-		int q = (a/b);
-		int r = (a%b);
+		int q = ( a / b );
+		int r = ( a % b );
 		int u = q*x + y;
 		int v = x;
 		while(diophantine(b, r, c, u, v));
