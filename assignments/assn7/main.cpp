@@ -22,41 +22,60 @@ using namespace std;
 
 int gcd(int a, int b)
 {
-	if(a > b)
+	int x, y, r, sx, sy, sr;
+	x = a;
+	sx = 1;
+	y = b;
+	sy = 0;
+	while(y != 0)
 	{
-		if(a % b == 0)
-			return b;
-		else
-		{
-			a = a % b;
-			gcd(a, b);
-		}
+		r = x % y;
+		sr = sx - sy*(x - r)/y;
+		x = y;
+		sx = sy;
+		y = r;
+		sy = sr;
 	}
-	else
-	{
-		if(b % a == 0)
-			return a;
-		else
-		{
-			b = b % a;
-			gcd(a, b);
-		}
-	}
-	return 0;
+	return x;
+	// if(a > b)
+	// {
+	// 	if(a % b == 0)
+	// 		return b;
+	// 	else
+	// 	{
+	// 		a = a % b;
+	// 		gcd(a, b);
+	// 	}
+	// }
+	// else
+	// {
+	// 	if(b % a == 0)
+	// 		return a;
+	// 	else
+	// 	{
+	// 		b = b % a;
+	// 		gcd(a, b);
+	// 	}
+	// }
+	// return 0;
 }
 
 bool diophantine(int a, int b, int c, int &x, int &y)
 {
-	if(!(gcd(a,b) % c == 0))
+	if(a==0 && b==0)
+		return false;
+	else if(!(gcd(a,b) % c == 0))
 		return false;
 	else if(b % a == 0)
 	{
+		cout << "b % a == 0" << endl;
 		x = 0;
 		y = c/b;
 		return true;
 	}
 	else
 	{
+		cout << "default case" << endl;
 		int q = ( a / b );
 		int r = ( a % b );
 		int u = q*x + y;
@@ -71,32 +90,32 @@ bool diophantine(int a, int b, int c, int &x, int &y)
 
 int main()
 {
-	string infile, outfile;
-	cout << "Enter name of input file: ";
-	cin >> infile;
-	cout << "Enter name of output file: ";
-	cin >> outfile;
+	// string infile, outfile;
+	// cout << "Enter name of input file: ";
+	// cin >> infile;
+	// cout << "Enter name of output file: ";
+	// cin >> outfile;
 	
-	ifstream in;
-	in.open(infile.c_str());
-	if(!in.is_open())
-	{
-		cout << "Error: input file not valid. Quitting" << endl;
-		return 0;
-	}
-	ofstream out;
-	out.open(outfile.c_str());
-	if(!out.is_open())
-	{
-		cout << "Error: output file not valid. Quitting" << endl;
-		return 0;
-	}
+	// ifstream in;
+	// in.open(infile.c_str());
+	// if(!in.is_open())
+	// {
+	// 	cout << "Error: input file not valid. Quitting" << endl;
+	// 	return 0;
+	// }
+	// ofstream out;
+	// out.open(outfile.c_str());
+	// if(!out.is_open())
+	// {
+	// 	cout << "Error: output file not valid. Quitting" << endl;
+	// 	return 0;
+	// }
 	
-	while(!in.eof())
+	// while(!in.eof())
 	{
 		int a, b, c, x, y;
-		in >> a >> b >> c;
-		if(!diophantine(a, b, c, x, y))
+		cin >> a >> b >> c;
+		if(diophantine(a, b, c, x, y))
 			cout << "No solution!" << endl;
 		else
 		{
