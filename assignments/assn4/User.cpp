@@ -6,5 +6,6 @@ using namespace std;
 
 bool User::check(const string &uname, const string &pass) const
 {
-    return (username=="") && (username==uname) && (password==pass);
+    // cout << "User::check: " << uname << '\t' << pass << endl;
+    return (username!="") && (username==uname) && (password==pass);
 }

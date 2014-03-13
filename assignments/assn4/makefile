@@ -20,4 +20,4 @@ BBoard.o: BBoard.cpp BBoard.h User.o Message.o
 	$(COMPILER) $(FLAGS) -c BBoard.cpp
 
 clean:
-	rm *.o *.exe main
+	rm -f *.o *.exe main
