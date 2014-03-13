@@ -13,7 +13,7 @@ using namespace std;
       unsigned id;
       // This will be the size of the message_list vector to which the
       // newly constructed Message* is being pushed_back
-      vector<Message *> child_list;
+      vector<Message*> child_list;
       //This is how a Message is able to keep track of its Replies
 
     public:
@@ -61,6 +61,5 @@ using namespace std;
       //displays the message in the given format. See output specs.
       // void display() const; //vitrified
   };
-  //end inc guards
-  #endif
-  
+//end inc guards
+#endif
