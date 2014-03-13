@@ -4,8 +4,8 @@
 
 using namespace std;
 
-void Message::display() const
-{
-    cout << subject << endl;
-    cout << "from " << author << ": " << body << endl;
-}
+// void Message::display() const //vitrified
+// {
+//     cout << subject << endl;
+//     cout << "from " << author << ": " << body << endl;
+// }
