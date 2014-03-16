@@ -23,8 +23,8 @@ class BBoard
         // User get_user(const string &name) const;
         void display() const;
         void add_message();
-        
-        void test(){}
+
+        void my_test(int);
         
         void quit(){cout << "Bye!" << endl; exit(0);};
         void error(int);

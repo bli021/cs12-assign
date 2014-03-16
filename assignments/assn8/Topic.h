@@ -1,8 +1,11 @@
 #ifndef __TOPIC_H__
 #define __TOPIC_H__
+
 #include <iostream>
 #include "Message.h"
+
 using namespace std;
+
 class Topic: public Message
 {
     // no new member variables
@@ -13,8 +16,9 @@ class Topic: public Message
         //Parameterized constructor
         Topic(const string &athr,
                 const string &sbjct,
-                const string &body,
-                unsigned id);
+                const string &bdy,
+                unsigned id)
+            : Message(athr,sbjct,bdy,id){}
 
         virtual bool is_reply() const {return false;} //returns false
 

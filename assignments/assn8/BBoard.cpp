@@ -170,7 +170,7 @@ void BBoard::run()
             add_topic();
         else if(temp=='R' || temp=='r')
             add_reply();
-        else if(temp=='T' || temp=='t'){}
+        else if(temp=='T' || temp=='t')
             test();
     }
 }
@@ -242,6 +242,7 @@ void BBoard::add_topic()
         // cout << "<curr>" << curr << "</curr>"; 
     }
     // cout << "Finished body: " << endl << body;
+    message_list.push_back(new Topic(current_user->get_username(), title, body,message_list.size()));
 }
 
 
@@ -303,7 +304,7 @@ void BBoard::error(int errlvl)
     exit(0);
 }
 
-// void BBoard::test()
-// {
-//     cout << message_list.size() << endl;
-// }
+void BBoard::test()
+{
+    cout << "Message list: " << message_list.size() << endl;
+}

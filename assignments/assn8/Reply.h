@@ -1,8 +1,11 @@
 #ifndef __REPLY_H__
 #define __REPLY_H__
+
 #include <iostream>
 #include "Message.h"
+
 using namespace std;
+
 class Reply: public Message
 {
     //no new member variables

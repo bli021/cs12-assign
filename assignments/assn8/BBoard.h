@@ -28,6 +28,7 @@ class BBoard
         
         void quit(){cout << "Bye!" << endl; exit(0);};
         void error(int);
+        void test();
     public:
         BBoard() : title("Default Title"), user_list(0), current_user(new User("","")), message_list(){}
         BBoard(const string &ttl) : title(ttl), user_list(0), current_user(new User("","")), message_list(){}
