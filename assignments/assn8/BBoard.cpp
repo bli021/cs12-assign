@@ -202,7 +202,6 @@ void BBoard::display() const
         for(unsigned i=0; i<message_list.size();i++)
         {
             cout << dashes << endl;
-            cout << "Message #" << i << ": ";
             message_list.at(i)->print(0);
         }
 
@@ -242,6 +241,10 @@ void BBoard::add_topic()
         // cout << "<prev>" << prev << "</prev>";
         // cout << "<curr>" << curr << "</curr>"; 
     }
+    // cout << "::" << body << "::" << endl;
+    body.at(body.size()-1) = '\0';
+    body.at(body.size()-2) = '\0';
+    // cout << "::" << body << "::" << endl;
     // cout << "Finished body: " << endl << body;
     message_list.push_back(new Topic(current_user->get_username(), subject, body, message_list.size()));
 }
@@ -250,15 +253,14 @@ void BBoard::add_topic()
 void BBoard::add_reply()
 {
     bool done=false;
-    int id;
+    unsigned id;
     string title, body, curr, prev;
     while(!done)
     {
         cout << "Enter Message ID: ";
         cin >> id;
-        if(id<0)
-            return;
-        else if(id>static_cast<int>(message_list.size()))
+        id--;
+        if(id >= message_list.size())
             cout << "ID is too big." << endl;
         else
         {
@@ -275,6 +277,11 @@ void BBoard::add_reply()
                 // cout << "<prev>" << prev << "</prev>";
                 // cout << "<curr>" << curr << "</curr>"; 
             }
+            // body.pop_back();
+            // cout << "::" << body << "::" << endl;
+            body.at(body.size()-1) = '\0';
+            body.at(body.size()-2) = '\0';
+            // cout << "::" << body << "::" << endl;
             message_list.push_back(new Reply(current_user->get_username(), title, body, message_list.size()));
             //create a new reply and push pointer to message_list
             cout << "Message recorded!" << endl;

@@ -19,5 +19,9 @@ Message::~Message()
 void Message::print(unsigned indentation) const
 {
     string indent(indentation,'\t');
-    cout << "indents:" << indent << "to here";
+    cout << "Message #" << id << ": " << subject << endl;
+    cout << "from " << author << ": " << body << endl;
+    // cout << "Author: " << author << endl;
+    // cout << "Subject: " << subject << endl;
+    // cout << "Body: " << body << endl;
 }

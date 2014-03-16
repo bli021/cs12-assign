@@ -4,7 +4,7 @@
 #	Message board of death
 
 COMPILER=g++
-FLAGS=-W -Wall -Werror -ansi -pedantic
+FLAGS=-std=c++11 -W -Wall -Werror -ansi -pedantic
 OBJS=BBoard.o Message.o Reply.o Topic.o User.o
 
 all: main.cpp $(OBJS)
