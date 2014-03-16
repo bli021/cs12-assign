@@ -1,6 +1,9 @@
 #ifndef __TOPIC_H__
 #define __TOPIC_H__
-class Topic : public Message
+#include <iostream>
+#include "Message.h"
+using namespace std;
+class Topic: public Message
 {
     // no new member variables
     public:

@@ -10,7 +10,7 @@ OBJS=BBoard.o Message.o Reply.o Topic.o User.o
 all: main.cpp $(OBJS)
 	$(COMPILER) $(FLAGS) main.cpp $(OBJS) -o main
 
-BBoard.o: BBoard.cpp BBoard.h User.o Message.o
+BBoard.o: BBoard.cpp BBoard.h User.o Message.o Reply.o
 	$(COMPILER) $(FLAGS) -c BBoard.cpp
 
 Message.o: Message.cpp Message.h

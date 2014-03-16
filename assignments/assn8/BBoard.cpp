@@ -1,9 +1,11 @@
 // #include <iostream>
 #include <fstream>
+#include <string>
 
 #include "BBoard.h"
 #include "User.h"
 #include "Message.h"
+#include "Reply.h"
 
 using namespace std;
 
@@ -168,6 +170,8 @@ void BBoard::run()
             add_topic();
         else if(temp=='R' || temp=='r')
             add_reply();
+        else if(temp=='T' || temp=='t'){}
+            test();
     }
 }
 
@@ -198,7 +202,7 @@ void BBoard::display() const
         {
             cout << dashes << endl;
             cout << "Message #" << i << ": ";
-            message_list.at(i)->print();
+            message_list.at(i)->print(0);
         }
 
         cout << dashes << endl;
@@ -221,18 +225,23 @@ void BBoard::display() const
 
 void BBoard::add_topic()
 {
-    char subject[256], curr, prev;
-    string body;
+    string subject=" ", prev=" ";
+    string body, curr;
     cout << "Subject: ";
-    cin.getline(subject,256);
-    cin.getline(subject,256);
-    while(curr!='\n' && prev!='\n')
+    getline(cin,subject);
+    getline(cin,subject);
+    cout << "Body: ";
+    getline(cin,curr);
+    body += curr + "\n";
+    while(prev!="" && curr!="")
     {
         prev = curr;
-        cin >> curr;
-        body+=curr;
+        getline(cin,curr);
+        body += curr + "\n";
+        // cout << "<prev>" << prev << "</prev>";
+        // cout << "<curr>" << curr << "</curr>"; 
     }
-
+    // cout << "Finished body: " << endl << body;
 }
 
 
@@ -240,7 +249,7 @@ void BBoard::add_reply()
 {
     bool done=false;
     int id;
-    string title;
+    string title, body, curr, prev;
     while(!done)
     {
         cout << "Enter Message ID: ";
@@ -248,13 +257,26 @@ void BBoard::add_reply()
         if(id<0)
             return;
         else if(id>static_cast<int>(message_list.size()))
-            cout << "too big" << endl;
+            cout << "ID is too big." << endl;
         else
         {
-            //find the title of the original post
+            title = message_list.at(id)->get_subject();
             title = "Re: " + title;
-            //cin body
+            cout << "Body: ";
+            getline(cin,curr);
+            body += curr + "\n";
+            while(prev!="" && curr!="")
+            {
+                prev = curr;
+                getline(cin,curr);
+                body += curr + "\n";
+                // cout << "<prev>" << prev << "</prev>";
+                // cout << "<curr>" << curr << "</curr>"; 
+            }
+            message_list.push_back(new Reply(current_user->get_username(), title, body,message_list.size()));
             //create a new reply and push pointer to message_list
+            cout << "Message recorded!" << endl;
+            done = true;
         }
     }
 
@@ -280,3 +302,8 @@ void BBoard::error(int errlvl)
     }
     exit(0);
 }
+
+// void BBoard::test()
+// {
+//     cout << message_list.size() << endl;
+// }

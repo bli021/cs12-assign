@@ -19,13 +19,14 @@ using namespace std;
 
     public:
       //default constructor
-      Message() : author(), subject(), body(){}
+      Message() : author(), subject(), body(), id(0){}
 
       //Constructor with parameters
       Message(const string &athr, 
               const string &sbjct, 
-              const string &bdy)
-        : author(athr), subject(sbjct), body(bdy){}
+              const string &bdy,
+              const unsigned num)
+        : author(athr), subject(sbjct), body(bdy), id(num){}
 
       //Be careful here: some Messages will have two pointers to
       //them, stored in very different places!
@@ -51,13 +52,13 @@ using namespace std;
       void print(unsigned indentation) const;
 
       //returns the subject string
-      const string & get_subject() const;
+      const string & get_subject() const {return subject;}
 
       // returns the id
       unsigned get_id() const;
 
       //Adds a pointer to the child to the parent's child_list
-      void add_chile(Message *child);
+      void add_child(Message *child);
 
       //displays the message in the given format. See output specs.
       // void display() const; //vitrified

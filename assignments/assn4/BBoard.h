@@ -17,12 +17,14 @@ class BBoard
         string title;
         vector<User> user_list;
         User *current_user;
-        vector<Message> message_list;
+        vector<Message *> message_list;
         // void add_user(istream &infile, const string &name, const string &pass);
         bool user_exists(const string &name, const string &pass) const;
         // User get_user(const string &name) const;
         void display() const;
         void add_message();
+        
+        void test(){}
         
         void quit(){cout << "Bye!" << endl; exit(0);};
         void error(int);
