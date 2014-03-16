@@ -198,7 +198,7 @@ void BBoard::display() const
         {
             cout << dashes << endl;
             cout << "Message #" << i << ": ";
-            message_list.at(i)->display();
+            message_list.at(i)->print();
         }
 
         cout << dashes << endl;
@@ -252,7 +252,7 @@ void BBoard::add_reply()
         else
         {
             //find the title of the original post
-            title = "Re: " + title
+            title = "Re: " + title;
             //cin body
             //create a new reply and push pointer to message_list
         }
