@@ -94,9 +94,62 @@ bool BBoard::load_messages(const string& datafile)
         return false;
     for(int i=0; data.good(); i++)
     {
-        string a,b;
-        data >> a >> b;
-        //todo
+        bool isReply;
+        string subject, author, body, current, field, text;
+        unsigned numMsgs, id, children=-1, startPos;
+        data >> numMsgs;
+        for(unsigned i=0; i <= numMsgs; i++)
+        {
+            vector<int> children;
+            unsigned done=0;
+            while(done<5)
+            {
+                getline(data,current);
+                if(current.find(":") != string::npos)
+                {
+                    startPos = current.find(":",current.find(":"));
+                    text = current.substr(startPos);
+                    field = current.substr(current.find(":"),startPos);
+                    isReply = (field.find("Re") != string::npos);
+                    cout << "Field: " << field << endl;
+                    if(field=="id")
+                        id = atoi(field.c_str());
+                    else if(field=="subject")
+                        subject = field;
+                    else if(field=="from")
+                        author = field;
+                    else if(field=="children")
+                        children.push_back(atoi(field.c_str()));
+                    else if(field=="body")
+                        body = field;
+                    done++;
+                }
+                else if(current.find("<end>") != string::npos)
+                    done = 5;
+                else
+                    body += "\n" + current;
+                // if(current.find(":id:") != npos)
+                //     id = current.substr(current.find(":",current.find(":")+1));
+            }
+            if(isReply)
+                message_list.push_back(new Reply(author, subject, body, id));
+            else
+                message_list.push_back(new Topic(author, subject, body, id));
+            for(int y=0; y < children.size(); y++)
+                message_list.at(i).add_child(children.at(y)); 
+    
+        }
+        for(unsigned x=0; x < children.size(); x++ )
+            message_list.at(children.at(i)).add_child(message_list);
+        /*
+        <begin_topic>
+        :id: 1
+        :subject: 2
+        :from: 3
+        :children: 4
+        :body: 5
+        <end>
+        */
     }
     return true;
 }
@@ -201,6 +254,8 @@ void BBoard::display() const
     {
         for(unsigned i=0; i<message_list.size();i++)
         {
+            if(message_list.at(i)->is_reply())
+
             cout << dashes << endl;
             message_list.at(i)->print(0);
         }
@@ -314,5 +369,6 @@ void BBoard::error(int errlvl)
 
 void BBoard::test()
 {
-    cout << "Message list: " << message_list.size() << endl;
+    bool parts[5] = {false, false, false, false, false};
+    cout << parts;
 }

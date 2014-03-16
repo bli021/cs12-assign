@@ -55,7 +55,7 @@ using namespace std;
       const string & get_subject() const {return subject;}
 
       // returns the id
-      unsigned get_id() const;
+      unsigned get_id() const {return id;}
 
       //Adds a pointer to the child to the parent's child_list
       void add_child(Message *child);
