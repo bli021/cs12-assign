@@ -6,6 +6,7 @@
 #include "User.h"
 #include "Message.h"
 #include "Reply.h"
+#include "Topic.h"
 
 using namespace std;
 
@@ -225,7 +226,7 @@ void BBoard::display() const
 
 void BBoard::add_topic()
 {
-    string subject=" ", prev=" ";
+    string subject, prev=" ";
     string body, curr;
     cout << "Subject: ";
     getline(cin,subject);
@@ -242,7 +243,7 @@ void BBoard::add_topic()
         // cout << "<curr>" << curr << "</curr>"; 
     }
     // cout << "Finished body: " << endl << body;
-    message_list.push_back(new Topic(current_user->get_username(), title, body,message_list.size()));
+    message_list.push_back(new Topic(current_user->get_username(), subject, body, message_list.size()));
 }
 
 
@@ -274,7 +275,7 @@ void BBoard::add_reply()
                 // cout << "<prev>" << prev << "</prev>";
                 // cout << "<curr>" << curr << "</curr>"; 
             }
-            message_list.push_back(new Reply(current_user->get_username(), title, body,message_list.size()));
+            message_list.push_back(new Reply(current_user->get_username(), title, body, message_list.size()));
             //create a new reply and push pointer to message_list
             cout << "Message recorded!" << endl;
             done = true;
