@@ -1,6 +1,26 @@
-// #include <iostream>
+//  =============== BEGIN ASSESSMENT HEADER ================
+/// @file assignment1/main.cpp 
+/// @brief Assignment 2 for CS 12 Winter 2014
+///
+/// @author David Anderson [dande011@ucr.edu]
+/// @date <2/19/2014>
+/// @par Enrollment Notes 
+///     Lecture Section: 001
+/// @par
+///     Lab Section: 021
+/// @par
+///     TA: Nkenge Wheatland
+///
+/// @par Plagiarism Section
+/// I hereby certify that the code in this file
+/// is ENTIRELY my own original work.
+//  =============== END ASSESSMENT HEADER ==================
+
+#include <iostream>
 #include <fstream>
 #include <string>
+#include <sstream>
+#include <vector>
 
 #include "BBoard.h"
 #include "User.h"
@@ -9,6 +29,13 @@
 #include "Topic.h"
 
 using namespace std;
+
+void BBoard::display(vector<vector<int> > a) const
+{
+    for(unsigned i=0; i < a.size(); i++)
+        for(unsigned j=0; j < a.at(i).size(); j++)
+            cout << "vector.at(" << i << ").at(" << j << "): " << a.at(i).at(j) << endl;
+}
 
 //--- PUBLIC ---
 BBoard::~BBoard()
@@ -88,46 +115,72 @@ bool BBoard::load_users(const string &userfile)
 
 bool BBoard::load_messages(const string& datafile)
 {
+    unsigned numMsgs;
     ifstream data;
     data.open(datafile.c_str());
     if(!data.is_open())
         return false;
-    for(int i=0; data.good(); i++)
+    data >> numMsgs;
+    // cout << numMsgs << endl;
+    vector<vector<int> > chile(numMsgs);
+    while(data.good())
     {
+        // cout << "Begin for(file)" << endl;
         bool isReply;
         string subject, author, body, current, field, text;
-        unsigned numMsgs, id, children=-1, startPos;
-        data >> numMsgs;
+        unsigned id, startPos;
         for(unsigned i=0; i <= numMsgs; i++)
         {
-            vector<int> children;
-            unsigned done=0;
-            while(done<5)
+            // cout << "Begin for(message)" << endl;
+            while(true)
             {
+                cout << "Begin While loop" << endl;
                 getline(data,current);
-                if(current.find(":") != string::npos)
+                if(current.find("<end>")!=string::npos)
+                    break;
+                else if(current.find("<begin_topic>")!=string::npos)
+                    isReply=false;
+                else if(current.find("<begin_reply>")!=string::npos)
+                    isReply=true;
+                else if(current.find(":") != string::npos)
                 {
-                    startPos = current.find(":",current.find(":"));
+                    startPos = current.find(":", 1)+2;
                     text = current.substr(startPos);
-                    field = current.substr(current.find(":"),startPos);
-                    isReply = (field.find("Re") != string::npos);
-                    cout << "Field: " << field << endl;
+                    field = current.substr(1, startPos-3);
+                    // cout << "Field: " << "::" << field << "::" << endl;
+                    // cout << "Text: " << "::" << text << "::" << endl;
                     if(field=="id")
                         id = atoi(field.c_str());
                     else if(field=="subject")
-                        subject = field;
+                        subject = text;
+                        // cout << "Subject: " << text << endl;
                     else if(field=="from")
-                        author = field;
+                        author = text;
+                        // cout << "Author: " << text << endl;
                     else if(field=="children")
-                        children.push_back(atoi(field.c_str()));
+                    {
+                        // cout << "Children: " << text << endl;
+                        // cout << "Chile: " << atoi(text.c_str()) << endl;
+                        // while(atoi(text.substr(2).c_str())>0)
+                        //     cout << "Chile: " << atoi(text.c_str());
+                        stringstream children;
+                        children << text;
+                        int chiles;
+                        // cout << "i: " << i << endl;
+                        // cout << "chile.size(): " << chile.size() << endl;
+                        // display(chile);
+                        while(children >> chiles)
+                            chile.at(i).push_back(chiles);
+                        // cout << "Chile: " << chiles << endl;
+                    }
                     else if(field=="body")
-                        body = field;
-                    done++;
+                        body = text;
                 }
-                else if(current.find("<end>") != string::npos)
-                    done = 5;
-                else
+                else if(current!="")
+                {
                     body += "\n" + current;
+                    // cout << "body: " << body << endl;
+                }
                 // if(current.find(":id:") != npos)
                 //     id = current.substr(current.find(":",current.find(":")+1));
             }
@@ -135,12 +188,10 @@ bool BBoard::load_messages(const string& datafile)
                 message_list.push_back(new Reply(author, subject, body, id));
             else
                 message_list.push_back(new Topic(author, subject, body, id));
-            for(int y=0; y < children.size(); y++)
-                message_list.at(i).add_child(children.at(y)); 
-    
+            // for(unsigned y=0; y < chile.size(); y++)
+            //     message_list.at(i).add_child(chile.at(y)); 
+            // cout << "End for(message)" << endl;
         }
-        for(unsigned x=0; x < children.size(); x++ )
-            message_list.at(children.at(i)).add_child(message_list);
         /*
         <begin_topic>
         :id: 1
@@ -150,7 +201,26 @@ bool BBoard::load_messages(const string& datafile)
         :body: 5
         <end>
         */
+        // cout << "End for(file)" << endl;
     }
+    // for(unsigned x=0; x < chile.size(); x++ )
+    //     message_list.at(chile.at(i)).add_child(message_list);
+    for(unsigned x=0; x < chile.size(); x++ )
+    {
+        // cout << "Begin for(traverse message_list) x: " << x << endl;
+        // cout << "chile.size(): " << chile.size() << endl;
+        // cout << "chile.at("<<x<<").size(): " << chile.at(x).size() << endl;
+        for(unsigned y=0; y < chile.at(x).size(); y++)
+        {
+            // cout << "Begin for(traverse chile)" << endl;
+            // cout << "message_list.size(): " << message_list.size() << " x: " << x << endl;
+            // cout << "chile.size(): " << chile.size() << " chile.at(x).size(): " << chile.at(x).size() << " y: " << y << endl;
+            message_list.at(x)->add_child(message_list.at(chile.at(x).at(y))-1);
+            // cout << "End for(traverse chile)" << endl;
+        }
+        // cout << "End for(traverse message_list)" << endl;
+    }
+    // cout << "End of load_messages" << endl;
     return true;
 }
 
@@ -372,3 +442,4 @@ void BBoard::test()
     bool parts[5] = {false, false, false, false, false};
     cout << parts;
 }
+
